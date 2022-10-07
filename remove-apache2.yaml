@@ -3,12 +3,13 @@
   hosts: all
   become: yes
   tasks:
-    - name: Stop Apache2 Service
+    - name: Apache2 stop and disable
       service:
         name: apache2
         state: stopped
+        enabled: no
 
     - name: Remove Apache2 Service
-      service:
+      apt:
         name: apache2
         state: absent
