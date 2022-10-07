@@ -27,7 +27,7 @@
 
     - name: UnZip the Source Code
       unarchive:
-          src: /source
+          src: /source/lodge.zip
           dest: /source
 
     - name: Remove unZipped Archive 
