@@ -8,6 +8,12 @@
         name: apache2
         update_cache: yes
         state: present
+
+    - name: Create Directory for the Source Code
+      file:
+        path: /source
+        state: directory
+        mode: 0777
     
     - name: Download Project from the Jfrog Artifactory
       get_url:
