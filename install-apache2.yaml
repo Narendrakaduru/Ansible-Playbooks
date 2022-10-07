@@ -29,9 +29,11 @@
       unarchive:
           src: /source/lodge.zip
           dest: /source/
+          remote_src: yes
 
     - name: Remove unZipped Archive 
       command: sudo rm -rf /source/lodge.zip
+      remote_src: yes
 
     - name: Run Apache2 Service
       service:
