@@ -3,11 +3,11 @@
   hosts: web-server
   become: yes
   tasks:
-    -import-tasks: task1.yaml   
+    - import_tasks: task1.yaml   
 
 - name: This is the second Task running on the app-server group
   hosts: app-server
   become: yes
   tasks:
-    -import-tasks: task2.yaml 
+    - import_tasks: task2.yaml 
     
