@@ -1,0 +1,9 @@
+---
+- name: Stop all The apache Services Running
+  hosts: all
+  become: yes
+  tasks:
+    - name: Stop Apache2 Service
+      service:
+        name: apache2
+        state: stopped
