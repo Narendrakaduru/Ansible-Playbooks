@@ -15,7 +15,9 @@
         dest: /source
 
     - name: UnZip the Source Code
-      command: sudo unzip /source/lodge.zip
+      unarchive:
+          src: /source
+          dest: /source
 
     - name: Remove unZipped Archive 
       command: sudo rm -rf /source/lodge.zip
