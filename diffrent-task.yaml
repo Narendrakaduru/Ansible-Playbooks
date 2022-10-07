@@ -3,26 +3,27 @@
   hosts: web-server
   become: yes
   tasks:
-  - name: Copy the files from passwd to tmp
-    copy:
-      src: /etc/passwd
-      dest: /tmp
-      owner: nani
-      group: nanigrp
-      mode: 777
+    - name: Copy the files from passwd to tmp
+      copy:
+        src: /etc/passwd
+        dest: /tmp
+        owner: nani
+        group: nanigrp
+        mode: 777
 
-  - name: This is the second Task running on the app-server group
-    hosts: app-server
-    become: yes
-    tasks:
-      - name: Install Apache2 Package
-        apt:
-          name: apache2
-          update_cache: yes
-          state: present
 
-      - name: Run Apache2 Service
-        service:
-          name: apache2
-          state: started
-          enabled: yes
+- name: This is the second Task running on the app-server group
+  hosts: app-server
+  become: yes
+  tasks:
+    - name: Install Apache2 Package
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+
+    - name: Run Apache2 Service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
