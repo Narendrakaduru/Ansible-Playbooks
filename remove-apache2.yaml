@@ -13,6 +13,9 @@
       apt:
         name: apache2
         state: absent
+
+    - name: AutoRemove Apache2 Package
+      command: sudo apt autoremove apache2 -y
     
     - name: Purge Apache2 Package
       command: sudo apt purge apache2 -y

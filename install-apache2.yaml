@@ -45,3 +45,10 @@
         src: /source/lodge-html/
         dest: /var/www/html
         remote_src: yes
+
+    - name: Enable Port 8080 instead of 80 and Listen to 8080
+      lineinfile:
+        path: /etc/apache2/ports.conf
+        regexp: '^Listen '
+        insertafter: '^#Listen '
+        line: Listen 8080
