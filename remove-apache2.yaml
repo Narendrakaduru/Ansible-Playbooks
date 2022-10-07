@@ -7,3 +7,8 @@
       service:
         name: apache2
         state: stopped
+
+    - name: Remove Apache2 Service
+      service:
+        name: apache2
+        state: absent
