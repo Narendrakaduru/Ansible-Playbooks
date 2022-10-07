@@ -10,8 +10,9 @@
         state: present
     
     - name: Download Project from the Jfrog Artifactory
-      url: https://www.free-css.com/assets/files/free-css-templates/download/page283/lodge.zip
-      dest: /source/
+      get_url:
+        url: https://www.free-css.com/assets/files/free-css-templates/download/page283/lodge.zip
+        dest: /source/
 
     - name: UnZip the Source Code
       command: sudo unzip /source/lodge.zip
