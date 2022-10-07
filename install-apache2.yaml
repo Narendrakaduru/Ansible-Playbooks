@@ -21,11 +21,13 @@
       get_url:
         url: https://www.free-css.com/assets/files/free-css-templates/download/page283/lodge.zip
         dest: /source
+        remote_src: True
 
     - name: UnZip the Source Code
       unarchive:
           src: /source
           dest: /source
+          remote_src: True
 
     - name: Remove unZipped Archive 
       command: sudo rm -rf /source/lodge.zip
