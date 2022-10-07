@@ -1,0 +1,13 @@
+---
+- name: This is my firt playbook file to run the plays
+  hosts: web-server
+  become: yes
+  tasks:
+    -import-tasks: task1.yaml   
+
+- name: This is the second Task running on the app-server group
+  hosts: app-server
+  become: yes
+  tasks:
+    -import-tasks: task2.yaml 
+    

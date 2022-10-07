@@ -1,0 +1,13 @@
+---
+  - name: Copy the files from passwd to tmp
+    copy:
+      src: /etc/passwd
+      dest: /tmp
+      owner: nani
+      group: nanigrp
+      mode: 777
+    
+  - name: create directory using file module
+    file:
+      path: /tmp/aws
+      state: directory
