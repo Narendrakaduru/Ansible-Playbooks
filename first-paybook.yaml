@@ -1,0 +1,24 @@
+---
+- name: This is my firt playbook file to run the plays
+  hosts: all
+  become: yes
+  tasks:
+  - name: Copy the files from passwd to tmp
+    copy:
+      src: /etc/passwd
+      dest: /tmp
+      owner: nani
+      group: nanigrp
+      mode: 777
+
+
+  - name: create directory using file module
+    file:
+      path: /tmp/aws
+      state: directory
+
+  - name: install a tree package
+    apt:
+      name: tree
+      update_cache: yes
+      state: present
