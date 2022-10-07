@@ -11,7 +11,7 @@
 
     - name: Create a Directory for the source Code
       file: 
-        src: /source
+        path: /source
         state: directory
         mode: 0777
         owner: devops
