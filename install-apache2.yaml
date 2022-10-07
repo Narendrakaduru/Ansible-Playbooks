@@ -1,0 +1,31 @@
+---
+- name: Installing Apache2 and Starting Services and Placing a project in It
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Apache2 Package
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+    
+    - name: Download Project from the Jfrog Artifactory
+      url: https://www.free-css.com/assets/files/free-css-templates/download/page283/lodge.zip
+      dest: /source/
+
+    - name: UnZip the Source Code
+      command: sudo unzip /source/lodge.zip
+
+    - name: Remove unZipped Archive 
+      command: sudo rm -rf /source/lodge.zip
+
+    - name: Run Apache2 Service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Copy the source file to apache directory
+      copy:
+        src: /source/lodge-html/
+        dest: /var/www/html
