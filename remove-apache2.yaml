@@ -1,5 +1,5 @@
 ---
-- name: Stop all The apache Services Running
+- name: Stop all the apache Services Running
   hosts: all
   become: yes
   tasks:
@@ -13,3 +13,6 @@
       apt:
         name: apache2
         state: absent
+    
+    - name: Purge Apache2 Package
+      command: sudo apt purge apache2 -y
