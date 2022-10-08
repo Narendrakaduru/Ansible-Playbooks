@@ -1,0 +1,29 @@
+---
+- name: This playbook is used to demonstarate Variables
+  hosts: all
+  become: yes
+  vars: 
+    mydir: /tmp/rajesh
+    myfile: /etc/passwd
+    mypkg:
+      - apache2
+      - wget
+      - tree
+  
+  tasks:
+    - name: Create a Directory Rajesh
+      file:
+        path: "{{ mydir }}"
+        state: present
+
+    - name: Copy file to Rajesh Directory
+      copy:
+        src: "{{ myfile }}"
+        dest: "{{ mydir }}"
+        mode: 0777
+
+    - name: Install All Packages Needed
+      apt:
+        name: "{{ mypkg }}"
+        update_cache: yes
+        state: present
