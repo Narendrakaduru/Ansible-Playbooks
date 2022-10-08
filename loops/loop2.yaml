@@ -9,8 +9,8 @@
       dest: /tmp/
     with_items:
       - /etc/passwd
-      - fetc/fstab
-      - f/etc/group
+      - /etc/fstab
+      - /etc/group
 
   - name: Create a Directory with the Names items in the loop
     file:
