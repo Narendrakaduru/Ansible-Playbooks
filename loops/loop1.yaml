@@ -11,4 +11,4 @@
         - /etc/passwd
         - /etc/group
         - /etc/fstab
-        - /etc/
+        - /etc/shadow
