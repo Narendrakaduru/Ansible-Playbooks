@@ -11,18 +11,18 @@
       - tree
   
   tasks:
-    - name: Create a Directory Rajesh
+    - name: Create a Directory {{ mydir }}
       file:
         path: "{{ mydir }}"
         state: directory
 
-    - name: Copy file to Rajesh Directory
+    - name: Copy file {{ myfile }} to {{ mydir }} Directory
       copy:
         src: "{{ myfile }}"
         dest: "{{ mydir }}"
         mode: 0777
 
-    - name: Install All Packages Needed
+    - name: Install All Packages Needed {{ mypkg }}
       apt:
         name: "{{ mypkg }}"
         update_cache: yes
