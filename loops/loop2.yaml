@@ -7,25 +7,25 @@
     copy:
       src: "{{ item }}"
       dest: /tmp/
-      with_items:
-        - /etc/passwd
-        - fetc/fstab
-        - f/etc/group
+    with_items:
+      - /etc/passwd
+      - fetc/fstab
+      - f/etc/group
 
   - name: Create a Directory with the Names items in the loop
     file:
       path: "{{ item }}"
       state: directory
-      with_items:
-        - /tmp/mycloud-1
-        - /tmp/mycloud-2
-        - /tmp/mycloud-3
+    with_items:
+      - /tmp/mycloud-1
+      - /tmp/mycloud-2
+      - /tmp/mycloud-3
 
   - name: Copy /etc/passwd to all the items in the loop
     copy:
       src: /etc/passwd
       dest: "{{ item }}"
-      with_items:
-        - /tmp/mycloud-1
-        - /tmp/mycloud-2
-        - /tmp/mycloud-3
+    with_items:
+      - /tmp/mycloud-1
+      - /tmp/mycloud-2
+      - /tmp/mycloud-3
