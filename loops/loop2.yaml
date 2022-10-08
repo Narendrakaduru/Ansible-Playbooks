@@ -5,7 +5,7 @@
   tasks:
   - name: Copy all the “{{ item }}" in the loop
     copy:
-      src: “{{ item }}"
+      src: "{{ item }}"
       dest: /tmp/
       with_items:
         - /etc/passwd
