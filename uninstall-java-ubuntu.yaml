@@ -9,3 +9,9 @@
         state: absent
         autoremove: yes
         purge: yes
+
+    - name: Auroremove openjdk-8-jdk Package
+      command: sudo apt purge openjdk-8-jdk -y
+
+    - name: Purge openjdk-8-jdk Package
+      command: sudo apt purge openjdk-8-jdk -y
