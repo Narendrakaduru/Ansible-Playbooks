@@ -12,6 +12,6 @@
     - name: Remove Apache2 Service
       apt:
         name: apache2
+        state: absent
         autoremove: yes
         purge: yes
-        state: absent
