@@ -1,0 +1,18 @@
+---
+- name: Installing Java Package
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing openjdk-8-jdk on Debian Servers
+      apt:
+        name: openjdk-8-jdk
+        update_cache: yes
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Installing java-11-openjdk on CentOs Servers
+      yum:
+        name: java-11-openjdk
+        update_cache: yes
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
