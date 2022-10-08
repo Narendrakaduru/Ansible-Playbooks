@@ -14,7 +14,7 @@
     - name: Create a Directory Rajesh
       file:
         path: "{{ mydir }}"
-        state: present
+        state: directory
 
     - name: Copy file to Rajesh Directory
       copy:
