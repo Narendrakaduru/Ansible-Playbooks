@@ -1,0 +1,9 @@
+---
+- name: Uninstalling Java Package on Ubuntu 18.04
+  hosts: all
+  become: yes
+  tasks:
+    - name: Uninstalling openjdk-8-jdk
+      apt:
+        name: openjdk-8-jdk
+        state: absent
