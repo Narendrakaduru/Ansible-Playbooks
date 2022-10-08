@@ -12,10 +12,6 @@
     - name: Remove Apache2 Service
       apt:
         name: apache2
+        autoremove: yes
+        purge: yes
         state: absent
-
-    - name: AutoRemove Apache2 Package
-      command: sudo apt autoremove apache2 -y
-    
-    - name: Purge Apache2 Package
-      command: sudo apt purge apache2 -y
