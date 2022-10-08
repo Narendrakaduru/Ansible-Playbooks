@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-  - name: Copy all the “{{ item }}" in the loop
+  - name: Copy all the "{{ item }}" in the loop
     copy:
       src: "{{ item }}"
       dest: /tmp/
@@ -12,7 +12,7 @@
         - fetc/fstab
         - f/etc/group
 
-  - name: Create a Directory with the Names “{{ item }}" in the loop
+  - name: Create a Directory with the Names "{{ item }}" in the loop
     file:
       path: "{{ item }}"
       state: directory
@@ -21,7 +21,7 @@
         - /tmp/mycloud-2
         - /tmp/mycloud-3
 
-  - name: Copy /etc/passwd to all the “{{ item }}" in the loop
+  - name: Copy /etc/passwd to all the "{{ item }}" in the loop
     copy:
       src: /etc/passwd
       dest: "{{ item }}"
