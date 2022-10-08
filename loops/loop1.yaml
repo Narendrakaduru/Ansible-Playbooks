@@ -3,11 +3,12 @@
   hosts: all
   become: yes
   tasks:
-    copy:
-      src: "{{ item }}"
-      dest: /tmp
-    with_items:
-      - /etc/passwd
-      - /etc/group
-      - /etc/fstab
-      - /etc/
+    - name: Copy all the items in the loop
+      copy:
+        src: "{{ item }}"
+        dest: /tmp
+      with_items:
+        - /etc/passwd
+        - /etc/group
+        - /etc/fstab
+        - /etc/
