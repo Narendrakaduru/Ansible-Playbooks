@@ -1,0 +1,24 @@
+---
+- name: This playbook is used to demonstarate Variables
+  hosts: all
+  become: yes
+  vars_files: 
+    - /home/devops/Ansible-Playbooks/variables/vars.yaml
+  
+  tasks:
+    - name: Create a Directory {{ mydir }}
+      file:
+        path: "{{ mydir }}"
+        state: directory
+
+    - name: Copy file {{ myfile }} to {{ mydir }} Directory
+      copy:
+        src: "{{ myfile }}"
+        dest: "{{ mydir }}"
+        mode: 0777
+
+    - name: Install All Packages Needed {{ mypkg }}
+      apt:
+        name: "{{ mypkg }}"
+        update_cache: yes
+        state: present
