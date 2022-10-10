@@ -1,0 +1,36 @@
+---
+- name: "This is to demonstrate loops"
+  hosts: all
+  become: yes
+  vars:
+    myfile:
+      - /etc/passwd
+      - /etc/fstab
+      - /etc/group
+    
+    mydir:
+      - /tmp/mycloud-1
+      - /tmp/mycloud-2
+      - /tmp/mycloud-3
+
+  tasks:
+  - name: Copy all the items in the loop
+    copy:
+      src: "{{ item }}"
+      dest: /tmp/
+    with_items:
+      - "{{ myfile }}"
+
+  - name: Create a Directory with the Names items in the loop
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - "{{ mydir }}"
+
+  - name: Copy /etc/passwd to all the items in the loop
+    copy:
+      src: /etc/passwd
+      dest: "{{ item }}"
+    with_items:
+      - "{{ mydir }}"
