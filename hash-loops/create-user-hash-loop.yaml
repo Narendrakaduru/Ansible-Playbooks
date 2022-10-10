@@ -1,0 +1,14 @@
+---
+- name: Create 3 user account and assign to its groups
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create user in the sysytem
+      user:
+        name: "{{ item.username }}"
+        state: present
+        group: "{{ item.groupname }}"
+      with_items:
+        - { username: 'naresh', groupname: 'test' }
+        - { username: 'suresh', groupname: 'dev' }
+        - { username: 'mahesh', groupname: 'prod' }
