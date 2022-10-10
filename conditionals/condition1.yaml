@@ -1,0 +1,10 @@
+---
+- name: "This is to demonstrate installing apache2 only on ubuntu"
+  hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2 on ubuntu
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution == "ubuntu"
