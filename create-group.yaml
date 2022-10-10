@@ -1,0 +1,14 @@
+---
+- name: Add groups to the system
+  hosts: all
+  become: yes
+  vars:
+    mygrps:
+      - test
+      - dev
+      - prod
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ mygrps }}"
