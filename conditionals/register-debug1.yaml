@@ -1,0 +1,16 @@
+---
+- name: This is used to demonstrate stat register and debug module
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check whether the file is exists or not
+      stat:
+        path: /tmp/myfile.txt
+      register: isexists
+      debug: var-isexists
+
+    - name: Copy the Content if the file exists.
+      copy:
+        content: "Welcome to Ansible"
+        dest: /tmp/myfile.txt
+        when: isexists.stat.exists == true
