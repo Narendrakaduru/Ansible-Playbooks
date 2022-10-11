@@ -1,0 +1,19 @@
+---
+- name: This is used to check apache2 service is up and running or not
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check whether the service is running or not
+      command: systemctl is-active apache2
+      register: report
+
+      debug: var=report
+
+    - name:
+      service:
+        name: apache2
+        state: restarted
+      when: report.rc == 0
+      
+
+
