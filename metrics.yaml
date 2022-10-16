@@ -1,0 +1,25 @@
+---
+- name: Check CPU and RAM utilization and trigger Email
+  hosts: web-server
+  become: yes
+  tasks:
+  - name: Transfer executable shellscript
+    copy:
+      src: /home/devops/shellscripts/metrics.sh
+      dest: /opt/metrics.sh
+      mode: 0775
+  
+  - name: Execute shellscript
+    ansible.builtin.shell: /home/devops/shellscripts/metrics.sh >> /home/devops/shellscripts/metric-log.txt
+    args:
+      executable: /bin/bash
+  
+  - mail:
+      host: smtp.gmail.com
+      port: 587
+      username: kadurunarendra@gmail.com
+      password: Nani8686@
+      to: Harish Lankepalli <lharish609@gmail.com>
+      subject: Ansible-report for monitoring CPU and Memory Usage
+      body: 'System {{ devops@ansible-server }} has been successfully provisioned.'
+    delegate_to: 54.205.247.31
