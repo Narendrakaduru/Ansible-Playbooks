@@ -26,7 +26,7 @@
       port: 587
       subtype: html
       username: kadurunarendra@gmail.com
-      password: "{{ zgzzsoienoxignqd }}"
+      password: "{{ gmail_password.txt }}"
       to: lharish609@gmail.com
       from: kadurunarendra@gmail.com
       attach: /home/devops/shellscripts/metric-log.txt
