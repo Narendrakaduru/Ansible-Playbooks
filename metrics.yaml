@@ -21,5 +21,5 @@
       password: Nani8686@
       to: Harish Lankepalli <lharish609@gmail.com>
       subject: Ansible-report for monitoring CPU and Memory Usage
-      body: 'System {{ devops@ansible-server }} has been successfully provisioned.'
+      body: 'Monitoring has been successfully provisioned.'
     delegate_to: 54.205.247.31
