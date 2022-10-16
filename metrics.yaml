@@ -21,16 +21,11 @@
     args:
       executable: /bin/bash
   
-  - name: Trigger emails to Team
+  - name: Sending an e-mail using the remote machine, not the Ansible controller node
     mail:
-      host: smtp.gmail.com
-      port: 587
-      subtype: html
-      username: kadurunarendra@gmail.com
-      password: "{{ gmail_pass }}"
-      to: kadurunarendra@gmail.com
-      from: kadurunarendra@gmail.com
+      host: localhost
+      port: 25
+      to: lharish609@gmail.com
       attach: /home/devops/shellscripts/metric-log.txt
-      subject: Ansible-report for monitoring CPU and Memory Usage
-      body: 'Monitoring has been successfully provisioned.'
-    delegate_to: localhost
+      subject: Ansible-report
+      body: System has been successfully provisioned.
