@@ -17,7 +17,7 @@
   - mail:
       host: localhost
       port: 25
-      to: Harish Lankepalli <lharish609@gmail.com>
+      to: lharish609@gmail.com
       subject: Ansible-report
       body: 'System {{ ansible-server }} has been successfully provisioned.'
       secure: always
