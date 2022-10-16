@@ -22,4 +22,4 @@
       to: Harish Lankepalli <lharish609@gmail.com>
       subject: Ansible-report for monitoring CPU and Memory Usage
       body: 'Monitoring has been successfully provisioned.'
-    delegate_to: 172.31.80.98
+    delegate_to: localhost
