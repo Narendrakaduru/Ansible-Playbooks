@@ -32,4 +32,4 @@
       attach: /home/devops/shellscripts/metric-log.txt
       subject: Ansible-report for monitoring CPU and Memory Usage
       body: 'Monitoring has been successfully provisioned.'
-    delegate_to: 172.31.80.98
+    delegate_to: 172.31.90.46
