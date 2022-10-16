@@ -3,7 +3,7 @@
   hosts: web-server
   become: yes
   vars:
-   - gmail_password.txt: !vault |
+   - gmail_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           66633165666138386534636430393566636531653036316166303734313534623232386465393531
           3639363463373532653633326466396634353762623362660a343334356234383931356161353533
@@ -26,7 +26,7 @@
       port: 587
       subtype: html
       username: kadurunarendra@gmail.com
-      password: "{{ gmail_password.txt }}"
+      password: "{{ gmail_password }}"
       to: lharish609@gmail.com
       from: kadurunarendra@gmail.com
       attach: /home/devops/shellscripts/metric-log.txt
