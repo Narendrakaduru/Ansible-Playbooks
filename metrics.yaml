@@ -17,7 +17,7 @@
       mode: 0775
   
   - name: Execute shellscript
-    ansible.builtin.shell: /opt/metrics.sh >> /home/devops/shellscripts/metric-log.txt
+    ansible.builtin.shell: /opt/metrics.sh > /home/devops/shellscripts/metric-log.txt
     args:
       executable: /bin/bash
   
