@@ -28,6 +28,7 @@
       to: 
         - Harish L <lharish609@gmail.com>
         - Harish C <harishlankepalli555@gmail.com>
+        - Dhana <dhjaya.407@gmail.com>
       subject: Ansible-report
       body: System has been successfully provisioned.
       attach: /home/devops/shellscripts/metric-log.txt
