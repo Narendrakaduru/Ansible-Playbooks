@@ -38,5 +38,5 @@
         - kadurunarendra@gmail.com
       subject: Ansible-report
       body: System has been successfully provisioned.
-      attach: /home/devops/shellscripts/metric-log.txt
+      attach: /tmp/fetched.zip
     delegate_to: 172.31.90.46
