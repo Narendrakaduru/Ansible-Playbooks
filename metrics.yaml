@@ -24,6 +24,7 @@
       path: /tmp/fetched
       dest: /tmp/fetched.zip
       format: zip
+    delegate_to: 172.31.90.46
   
   - name: Sending an e-mail using Gmail SMTP servers
     community.general.mail:
@@ -38,4 +39,4 @@
       subject: Ansible-report
       body: System has been successfully provisioned.
       attach: /home/devops/shellscripts/metric-log.txt
-    delegate_to: {{ ansible-server }}
+    delegate_to: 172.31.90.46
