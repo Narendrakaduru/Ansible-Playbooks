@@ -22,6 +22,7 @@
   - name: Create a zip archive of /path/to/foo
     archive:
       path: /tmp/fetched
+      dest: /tmp/fetched.zip
       format: zip
       remote_src: yes
   
