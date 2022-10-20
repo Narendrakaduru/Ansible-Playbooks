@@ -30,5 +30,5 @@
       executable: /bin/bash
   
   - name: Email notification
-      include_role:
-        name: send-email
+    include_role:
+      name: send-email
