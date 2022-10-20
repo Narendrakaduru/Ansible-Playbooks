@@ -15,12 +15,12 @@
       executable: /bin/bash
   
   - name: Sending an e-mail using Gmail SMTP servers
-  community.general.mail:
-    host: smtp.gmail.com
-    port: 587
-    username: kadurunarendra@gmail.com
-    password: dbqgmrocmnosfwqo
-    to: Harish L <lharish609@gmail.com>
-    subject: Ansible-report
-    body: System has been successfully provisioned.
-  delegate_to: localhost
+    community.general.mail:
+      host: smtp.gmail.com
+      port: 587
+      username: kadurunarendra@gmail.com
+      password: dbqgmrocmnosfwqo
+      to: Harish L <lharish609@gmail.com>
+      subject: Ansible-report
+      body: System has been successfully provisioned.
+    delegate_to: localhost
