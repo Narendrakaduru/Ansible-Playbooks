@@ -18,6 +18,12 @@
     ansible.builtin.fetch:
       src: /home/devops/shellscripts/metric-log.txt
       dest: /tmp/fetched
+
+  - name: Create a zip archive of /path/to/foo
+    archive:
+      path: /tmp/fetched
+      format: zip
+      remote_src: yes
   
   - name: Sending an e-mail using Gmail SMTP servers
     community.general.mail:
