@@ -14,6 +14,11 @@
     args:
       executable: /bin/bash
   
+  - name: Store file into /tmp/fetched in the Server from Nodes
+    ansible.builtin.fetch:
+      src: /home/devops/shellscripts/metric-log.txt
+      dest: /tmp/fetched
+  
   - name: Sending an e-mail using Gmail SMTP servers
     community.general.mail:
       host: smtp.gmail.com
