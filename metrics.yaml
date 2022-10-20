@@ -10,7 +10,7 @@
       mode: 0775
   
   - name: Execute shellscript
-    ansible.builtin.shell: /opt/metrics.sh >> /home/devops/shellscripts/metric-log.txt
+    ansible.builtin.shell: /opt/metrics.sh > /home/devops/shellscripts/metric-log.txt
     args:
       executable: /bin/bash
   
@@ -32,8 +32,8 @@
       username: kadurunarendra@gmail.com
       password: dbqgmrocmnosfwqo
       to: 
-        - Harish L <lharish609@gmail.com>
-        - Harish C <harishlankepalli555@gmail.com>
+        - lharish609@gmail.com
+        - harishlankepalli555@gmail.com
         - kadurunarendra@gmail.com
       subject: Ansible-report
       body: System has been successfully provisioned.
