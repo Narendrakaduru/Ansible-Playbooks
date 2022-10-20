@@ -2,13 +2,8 @@
 - name: Check CPU and RAM utilization and trigger Email
   hosts: web-server
   become: yes
-  vars:
-   - gmail_pass: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          62373630313665616361383033623764393934333464666461363966333834313631383332646266
-          3433623464326330663239356333323138363234653963610a656138333564386563366262653163
-          35623762353765646230396232316262643632386430616566343131366462323562616132643335
-          3863366361363934390a316535303936613434383435326261373134373837393762393031643331
+  vars_files:
+    vars/smtp_secret.yml
   tasks:
   - name: Transfer executable shellscript
     copy:
@@ -17,7 +12,7 @@
       mode: 0775
   
   - name: Execute shellscript
-    ansible.builtin.shell: /opt/metrics.sh >> /home/devops/shellscripts/metric-log.txt
+    ansible.builtin.shell: /opt/metrics.sh > /home/devops/shellscripts/metric-log.txt
     args:
       executable: /bin/bash
   
@@ -27,9 +22,8 @@
       port: 587
       subtype: html
       username: kadurunarendra@gmail.com
-      password: "{{ gmail_pass }}"
-      to: kadurunarendra@gmail.com
       from: kadurunarendra@gmail.com
+      to: kadurunarendra@gmail.com
       attach: /home/devops/shellscripts/metric-log.txt
       subject: Ansible-report for monitoring CPU and Memory Usage
       body: 'Monitoring has been successfully provisioned.'
