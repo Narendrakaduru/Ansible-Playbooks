@@ -7,7 +7,7 @@
   tasks:
     - name: Installing openjdk-8-jdk on Debian Servers
       apt:
-        name: openjdk-8-jdk
+        name: openjdk-11-jdk
         update_cache: yes
         state: present
       when: ansible_facts['os_family'] == "Debian"
