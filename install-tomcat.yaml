@@ -54,6 +54,7 @@
       become: yes
       become_user: tomcat
       shell: "mv /opt/tomcat8/apache*/* /opt/tomcat8"
+
     - name: Creating a service file
       become: yes
       copy: 
@@ -75,16 +76,19 @@
           [Install]
           WantedBy=multi-user.target
       dest: /etc/systemd/system/tomcat.service
+
     - name: Reload the SystemD to re-read configurations
       become: yes
       systemd:
         daemon-reload: yes
+
     - name: Enable the tomcat service and start
       become: yes
       systemd:
         name: tomcat
         enabled: yes
         state: started
+        
     - name: Connect to Tomcat server on port 8080 and check status 200 - Try 5 times
       tags: test
       uri:
