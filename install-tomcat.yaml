@@ -58,7 +58,7 @@
     - name: Creating a service file
       become: yes
       copy: 
-        content: |-
+      content: |-
           [Unit]
           Description=Tomcat Service
           Requires=network.target
