@@ -1,6 +1,6 @@
 ---
 - name: Download Tomcat8 from tomcat.apache.org
-  hosts: app-server
+  hosts: all
   become: yes
   vars:
     download_url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
@@ -10,6 +10,14 @@
         name: openjdk-11-jdk
         update_cache: yes
         state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Installing java-11-openjdk on CentOs Servers
+      yum:
+        name: java-11-openjdk
+        update_cache: yes
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
   
     - name: validate if Java is available 
       shell: 
@@ -41,8 +49,15 @@
         remote_src: yes
         group: tomcat
         owner: tomcat
+
+    - name: Remove Tomcat directory
+      file:
+        path: /opt/tomcat8
+        mode: 0755
+        state: absent
     
     - name: Move files to the /opt/tomcat8 directory
+      become_user: tomcat
       shell: "mv /opt/tomcat8/apache*/* /opt/tomcat8"
 
     - name: Creating a service file
