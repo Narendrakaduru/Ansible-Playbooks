@@ -58,7 +58,7 @@
     - name: Creating a service file
       become: yes
       copy: 
-      content: |-
+        content: |-
           [Unit]
           Description=Tomcat Service
           Requires=network.target
@@ -75,7 +75,7 @@
           Restart=on-abnormal
           [Install]
           WantedBy=multi-user.target
-      dest: /etc/systemd/system/tomcat.service
+        dest: /etc/systemd/system/tomcat.service
 
     - name: Reload the SystemD to re-read configurations
       become: yes
