@@ -51,7 +51,6 @@
         owner: tomcat
     
     - name: Move files to the /opt/tomcat8 directory
-      become_user: tomcat
       shell: "mv /opt/tomcat8/apache*/* /opt/tomcat8"
       delegate_to: localhost
 
