@@ -51,7 +51,7 @@
         owner: tomcat
     
     - name: Move files to the /opt/tomcat8 directory
-      shell: "mv /opt/tomcat8/apache*/* /opt/tomcat8"
+      shell: "mv /opt/tomcat8/apache-tomcat-8.5.83/* /opt/tomcat8"
       delegate_to: localhost
 
     - name: Creating a service file
