@@ -49,16 +49,11 @@
         remote_src: yes
         group: tomcat
         owner: tomcat
-
-    - name: Remove Tomcat directory
-      file:
-        path: /opt/tomcat8
-        mode: 0755
-        state: absent
     
     - name: Move files to the /opt/tomcat8 directory
       become_user: tomcat
       shell: "mv /opt/tomcat8/apache*/* /opt/tomcat8"
+      delegate_to: "{{ localhost }}"
 
     - name: Creating a service file
       copy: 
