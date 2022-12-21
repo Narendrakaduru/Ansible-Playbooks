@@ -1,0 +1,12 @@
+---
+- name: Detach EBS Volumes
+  hosts: servers
+  become: yes
+  tasks:
+  - ec2_vol:
+      aws_access_key: AKIAXOFVSRG3XYK6NVMM
+      aws_secret_key: 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
+      id: vol-0e5bb77cbd1654422
+      instance: None
+      zone: us-east-1b
+      region: us-east-1
