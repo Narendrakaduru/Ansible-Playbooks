@@ -3,16 +3,16 @@
   hosts: all
   become: yes
   tasks:
-    - name: Installing openjdk-8-jdk on Debian Servers
+    - name: Installing openjdk-17-jdk on Debian Servers
       apt:
-        name: openjdk-8-jdk
+        name: openjdk-17-jdk
         update_cache: yes
         state: present
       when: ansible_facts['os_family'] == "Debian"
 
-    - name: Installing java-11-openjdk on CentOs Servers
+    - name: Installing java-17-openjdk on RH Servers
       yum:
-        name: java-11-openjdk
+        name: java-17-openjdk
         update_cache: yes
         state: present
       when: ansible_facts['os_family'] == "RedHat"
