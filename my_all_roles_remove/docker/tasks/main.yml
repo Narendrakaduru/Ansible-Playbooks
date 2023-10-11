@@ -1,0 +1,34 @@
+- name: Remove required system packages
+  apt:
+    pkg:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - python3-pip
+    - virtualenv
+    - python3-setuptools
+    state: absent
+- name: Stop Docker Service
+  systemd:
+    name: docker
+    state: stopped
+    enabled: no
+  ignore_errors: yes # Ignore errors in case Docker is not installed
+- name: Uninstall Docker
+  apt:
+    name: "{{ item }}"
+    state: absent
+  loop:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  ignore_errors: yes # Ignore errors in case Docker is not installed
+- name: Remove Docker GPG Key
+  apt_key:
+    id: 0EBFCD88
+    state: absent
+- name: Remove Docker Repository
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu jammy stable"
+    state: absent

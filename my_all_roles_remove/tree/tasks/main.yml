@@ -1,0 +1,4 @@
+- name: Remove tree
+  apt:
+    name: tree
+    state: absent
