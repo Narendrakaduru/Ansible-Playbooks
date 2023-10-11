@@ -1,0 +1,7 @@
+---
+- name: Install and configure Apache2
+  hosts: node01
+  become: yes  # Use sudo privileges to install packages
+  roles:
+    - apache2
+
