@@ -1,0 +1,38 @@
+---
+- name: Create EC2 Instance
+  hosts: all
+  become: yes
+  vars:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    key_name: "{{ key_name }}"
+    group: "{{ group }}"
+    instance_type: "{{ instance_type }}"
+    image: "{{ image }}"
+    wait: "{{ wait }}"
+    wait_timeout: "{{ wait_timeout }}"
+    count: "{{ count }}"
+    instance_tags:
+      Name: "{{ Name }}"
+    monitoring: "{{ monitoring }}"
+    region: "{{ region }}"
+    vpc_subnet_id: "{{ vpc_subnet_id }}"
+    assign_public_ip: "{{ assign_public_ip }}"
+  tasks:
+  - name: Create an EC2 Instance {{ Name }}
+    ec2:
+      aws_access_key: "{{ aws_access_key }}"
+      aws_secret_key: "{{ aws_secret_key }}"
+      key_name: "{{ key_name }}"
+      group: "{{ group }}"
+      instance_type: "{{ instance_type }}"
+      image: "{{ image }}"
+      wait: "{{ wait }}"
+      wait_timeout: "{{ wait_timeout }}"
+      count: "{{ count }}"
+      instance_tags:
+        Name: "{{ Name }}"
+      monitoring: "{{ monitoring }}"
+      region: "{{ region }}"
+      vpc_subnet_id: "{{ vpc_subnet_id }}"
+      assign_public_ip: "{{ assign_public_ip }}"

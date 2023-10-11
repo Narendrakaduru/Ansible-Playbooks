@@ -1,0 +1,13 @@
+---
+- name: Create User
+  hosts: all
+  become: yes
+  vars:
+    user: "{{ user }}"
+    group: "{{ group }}"
+  tasks:
+  - name: Add the user {{ user }} and a primary group of {{ group }}
+    ansible.builtin.user:
+      name: "{{ user }}"
+      comment: John Doe
+      group: "{{ group }}"

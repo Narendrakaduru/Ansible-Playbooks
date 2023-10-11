@@ -1,0 +1,12 @@
+---
+- name: Installing Package.
+  hosts: all
+  become: yes
+  vars:
+    Package_Name: "{{ Package_Name }}"
+  tasks:
+    - name: Installing {{ Package_Name }}
+      apt:
+        name: "{{ Package_Name }}"
+        update_cache: yes
+        state: present
