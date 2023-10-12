@@ -1,0 +1,5 @@
+- name: Start Jenkins Service
+  systemd:
+    name: jenkins
+    enabled: yes
+    state: started

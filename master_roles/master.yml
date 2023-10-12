@@ -1,0 +1,8 @@
+- name: Install and configure
+  hosts: master
+  become: yes
+  roles:
+  - jenkins
+  - prometheus
+  - node_exporter
+  - tree
