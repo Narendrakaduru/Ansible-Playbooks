@@ -30,16 +30,17 @@
   file:
     path: /tmp/node_exporter-1.6.1.linux-amd64
     state: absent
-- name: Append Node Exporter Configuration
+- name: Render Node Exporter Configuration from Jinja2 Template
+  template:
+    src: node_exporter_config.j2 # Provide the path to your Jinja2 template
+    dest: /tmp/node_exporter_config.yml # Temporary file to store the rendered configuration
+  delegate_to: localhost
+- name: Append Rendered Configuration to Prometheus Configuration
   blockinfile:
     path: /etc/prometheus/prometheus.yml
     marker: "# {mark} ANSIBLE MANAGED BLOCK - DO NOT EDIT"
     insertafter: "^scrape_configs:"
-    content: |
-      - job_name: 'node_exporter'
-        scrape_interval: 5s
-        static_configs:
-          - targets: ['localhost:9100']
+    content: "{{ lookup('file', '/tmp/node_exporter_config.yml') }}"
 - name: Replace the content of /etc/systemd/system/node_exporter.service
   template:
     src: node_exporter_service.j2
@@ -56,13 +57,13 @@
   systemd:
     name: "{{ n_user }}"
     enabled: yes
-- name: Reload systemd to apply changes
-  systemd:
-    name: prometheus
-    state: reloaded
-  become: true
 - name: "UFW - Allow 9100 port"
   ufw:
     rule: allow
     port: 9100
     proto: tcp
+- name: Reload prometheus systemd to apply changes
+  systemd:
+    name: prometheus
+    state: reloaded
+  become: true

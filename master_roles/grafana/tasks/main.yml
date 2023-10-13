@@ -18,3 +18,8 @@
     name: grafana-server
     enabled: yes
   become: true
+- name: "UFW - Allow 3000 port"
+  ufw:
+    rule: allow
+    port: 3000
+    proto: tcp
