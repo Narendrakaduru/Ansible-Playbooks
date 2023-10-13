@@ -2,6 +2,6 @@
   hosts: node01
   become: yes
   roles:
+  - prometheus
   - node_exporter
-  - docker
-  - tree
+  - grafana

@@ -2,5 +2,6 @@
   hosts: node02
   become: yes
   roles:
-  - grafana
-# - node_exporter
+  - prometheus
+  - node_exporter
+
