@@ -1,0 +1,14 @@
+[Unit]
+Description=Artifactory service
+After=network.target
+
+[Service]
+Type=forking
+Restart=always
+RestartSec=60
+ExecStart=/opt/jfrog/artifactory-oss-7.68.14/app/bin/artifactory.sh start
+ExecStop=/opt/jfrog/artifactory-oss-7.68.14/app/bin/artifactory.sh stop
+
+[Install]
+WantedBy=multi-user.target
+Alias=artifactory.service

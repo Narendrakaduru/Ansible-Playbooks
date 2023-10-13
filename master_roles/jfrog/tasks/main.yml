@@ -1,0 +1,51 @@
+- name: Download Jfrog release archive to /tmp
+  get_url:
+    url: "{{ jfrog_url }}"
+    dest: "/tmp/jfrog-artifactory-oss-7.68.14-linux.tar.gz"
+    mode: 0644
+- name: Extract Jfrog release archive
+  shell: tar -xvzf /tmp/jfrog-artifactory-oss-7.68.14-linux.tar.gz -C /tmp
+- name: Clean up the archive
+  file:
+    path: "/tmp/jfrog-artifactory-oss-7.68.14-linux.tar.gz"
+    state: absent
+- name: Move artifactory-oss-7.68.14 to /opt
+  copy:
+    src: /tmp/artifactory-oss-7.68.14
+    dest: /opt/jfrog
+    mode: 0755
+    remote_src: true
+- name: Delete /tmp/artifactory-oss-7.68.14
+  file:
+    path: /tmp/artifactory-oss-7.68.14
+    state: absent
+- name: "UFW - Allow 8081 port"
+  ufw:
+    rule: allow
+    port: 8081
+    proto: tcp
+- name: "UFW - Allow 8082 port"
+  ufw:
+    rule: allow
+    port: 8082
+    proto: tcp
+- name: Create service file for artifactory /lib/systemd/system/artifactory.service
+  template:
+    src: jfrog_service.j2
+    dest: /lib/systemd/system/artifactory.service
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify: Start Artifactory Service
+- name: Reload systemd to apply changes
+  systemd:
+    name: artifactory
+    state: reloaded
+  become: true
+- name: Enable the artifactory service
+  systemd:
+    name: artifactory
+    enabled: yes
+  become: true
+
