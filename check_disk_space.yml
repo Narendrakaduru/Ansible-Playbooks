@@ -1,5 +1,12 @@
 ---
 - name: Check Disk Space utilization
+  hosts: localhost  # Install collection on the control node
+  tasks:
+    - name: Install community.general collection
+      ansible.builtin.command: ansible-galaxy collection install community.general
+      changed_when: false
+
+- name: Check Disk Space utilization on Web Servers
   hosts: web-server
   become: yes
   tasks:
