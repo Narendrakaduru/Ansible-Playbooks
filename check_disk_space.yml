@@ -7,7 +7,6 @@
       shell: df -h / | awk 'NR==2 {print $5}' | tr -d '%'
       register: disk_usage
       changed_when: false
-
     - name: Send Slack alert if disk usage is high
       community.general.slack_webhook:
         url: "https://hooks.slack.com/services/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"
